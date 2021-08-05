@@ -3,18 +3,15 @@
 IncludeTemplateLangFile(__FILE__);
 ?>
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<html lang="<?=LANGUAGE_ID;?>-<?=strtoupper(LANGUAGE_ID);?>">
 <head>
     <meta charset="UTF-8">
     <?$APPLICATION->ShowHead();?>
     <title><?$APPLICATION->ShowTitle()?></title>
-    <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/template_styles.css"/>
-    <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/slides.min.jquery.js"></script>
-    <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/jquery.carouFredSel-6.1.0-packed.js"></script>
-    <script type="text/javascript" src="<?=SITE_TEMPLATE_PATH?>/js/functions.js"></script>
-
-    <link rel="shortcut icon" type="image/x-icon" href="<?=SITE_TEMPLATE_PATH?>/favicon.ico">
+    <link rel="stylesheet" href="/bitrix/templates/.default/template_styles.css"/>
+    <script type="text/javascript" src="/bitrix/templates/.default/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="/bitrix/templates/.default/js/functions.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/bitrix/templates/.default/favicon.ico">
 
     <!--[if gte IE 9]><style type="text/css">.gradient {filter: none;}</style><![endif]-->
 </head>
@@ -26,11 +23,11 @@ IncludeTemplateLangFile(__FILE__);
             <table>
                 <tr>
                     <td rowspan="2" class="hd_companyname">
-                        <h1><a href="">Мебельный магазин</a></h1>
+                        <h1><a href=""><?= GetMessage('furniture store');?></a></h1>
                     </td>
                     <td rowspan="2" class="hd_txarea">
                         <span class="tel">8 (495) 212-85-06</span>	<br/>
-                        <? GetMessage('working time')?> <span class="workhours">ежедневно с 9-00 до 18-00</span>
+                        <?= GetMessage('working time');?> <span class="workhours">ежедневно с 9-00 до 18-00</span>
                     </td>
                     <td style="width:232px">
                         <form action="">

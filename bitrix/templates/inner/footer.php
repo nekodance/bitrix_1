@@ -1,4 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+<?
+IncludeTemplateLangFile(__FILE__);
+?>
 </div>
 </div>
 <div class="sb_sidebar">
@@ -35,13 +38,13 @@
         <p>Семинар производителей мебели России и СНГ, Обсуждение тенденций.</p>
     </div>
     <div class="sb_action">
-        <a href=""><img src="<?=SITE_TEMPLATE_PATH?>/content/11.png" alt=""/></a>
+        <a href=""><img src="/bitrix/templates/.default/content/11.png" alt=""/></a>
         <h4>Акция</h4>
         <h5><a href="">Мебельная полка всего за 560 Р</a></h5>
         <a href="" class="sb_action_more">Подробнее &rarr;</a>
     </div>
     <div class="sb_reviewed">
-        <img src="<?=SITE_TEMPLATE_PATH?>/content/8.png" class="sb_rw_avatar" alt=""/>
+        <img src="/bitrix/templates/.default/content/8.png" class="sb_rw_avatar" alt=""/>
         <span class="sb_rw_name">Сергей Антонов</span>
         <span class="sb_rw_job">Руководитель финансового отдела “Банк+”</span>
         <p>“Покупал офисные стулья и столы, остался очень доволен! Низкие цены, быстрая доставка, обслуживание на высоте! Спасибо!”</p>
@@ -81,14 +84,14 @@
 
         </div>
         <div class="ft_contacts">
-            <h4>Контактная информация</h4>
+            <h4><?= GetMessage('contact info');?></h4>
             <!-- vCard        http://help.yandex.ru/webmaster/hcard.pdf      -->
             <p class="vcard">
 						<span class="adr">
 							<span class="street-address">ул. Летняя стр.12, офис 512</span>
 						</span>
                 <span class="tel">8 (495) 212-85-06</span>
-                <strong>Время работы:</strong> <br/> <span class="workhours">ежедневно с 9-00 до 18-00</span><br/>
+                <strong><?= GetMessage('working time');?>:</strong> <br/> <span class="workhours">ежедневно с 9-00 до 18-00</span><br/>
             </p>
             <ul class="ft_solcial">
                 <li><a href="" class="fb"></a></li>
@@ -96,7 +99,7 @@
                 <li><a href="" class="ok"></a></li>
                 <li><a href="" class="vk"></a></li>
             </ul>
-            <div class="ft_copyright">© 2000 - 2012 "Мебельный магазин" </div>
+            <div class="ft_copyright">© 2000 - 2012 "<?= GetMessage('furniture store');?>" </div>
 
 
         </div>
