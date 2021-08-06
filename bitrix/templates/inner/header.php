@@ -23,10 +23,28 @@ IncludeTemplateLangFile(__FILE__);
             <table>
                 <tr>
                     <td rowspan="2" class="hd_companyname">
-                        <h1><a href=""><?= GetMessage('furniture store');?></a></h1>
+                        <h1><?$APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                "",
+                                Array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "AREA_FILE_SUFFIX" => "inc",
+                                    "EDIT_TEMPLATE" => "",
+                                    "PATH" => "/include/logo.php"
+                                )
+                            );?></h1>
                     </td>
                     <td rowspan="2" class="hd_txarea">
-                        <span class="tel">8 (495) 212-85-06</span>	<br/>
+                        <span class="tel"><?$APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                "",
+                                Array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "AREA_FILE_SUFFIX" => "inc",
+                                    "EDIT_TEMPLATE" => "",
+                                    "PATH" => "/include/phone.php"
+                                )
+                            );?></span>	<br/>
                         <?= GetMessage('working time');?> <span class="workhours">ежедневно с 9-00 до 18-00</span>
                     </td>
                     <td style="width:232px">
@@ -62,47 +80,34 @@ IncludeTemplateLangFile(__FILE__);
                     </td>
                 </tr>
             </table>
-            <div class="nv_topnav">
-                <ul>
-                    <li><a href=""   class="menu-img-fon"  style="background-image: url(images/nv_home.png);" ><span></span></a></li>
-                    <li><a href=""><span>Компания</span></a>
-                        <ul>
-                            <li><a href="">Пункт 1</a></li>
-                            <li><a href="">Пункт 2</a></li>
-                            <li><a href="">Пункт 3</a></li>
-                            <li><a href="">Пункт 4</a></li>
-                        </ul>
-                    </li>
-                    <li><a href=""><span>Новости</span></a></li>
-                    <li><a href=""><span>Каталог</span></a></li>
-                    <li><a href=""><span>Акции</span></a>
-                        <ul>
-                            <li><a href="">Пункт 1</a>
-                                <ul>
-                                    <li><a href="">Пункт 1</a></li>
-                                    <li><a href="">Пункт 2</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="">Пункт 2</a></li>
-                            <li><a href="">Пункт 3</a></li>
-                            <li><a href="">Пункт 4</a></li>
-                        </ul>
-                    </li>
-                    <li><a href=""><span>Партнерам</span></a></li>
-                    <li><a href=""><span>Контакты</span></a></li>
-                    <div class="clearboth"></div>
-                </ul>
-            </div>
+            <?$APPLICATION->IncludeComponent(
+                "bitrix:menu",
+                "top_menu",
+                Array(
+                    "ALLOW_MULTI_SELECT" => "N",
+                    "CHILD_MENU_TYPE" => "left",
+                    "DELAY" => "N",
+                    "MAX_LEVEL" => "2",
+                    "MENU_CACHE_GET_VARS" => array(0=>"",),
+                    "MENU_CACHE_TIME" => "3600",
+                    "MENU_CACHE_TYPE" => "N",
+                    "MENU_CACHE_USE_GROUPS" => "Y",
+                    "ROOT_MENU_TYPE" => "top",
+                    "USE_EXT" => "N"
+                )
+            );?>
         </div>
     </div>
 
     <!--- // end header area --->
     <div class="bc_breadcrumbs">
-        <ul>
-            <li><a href="">Каталог</a></li>
-            <li><a href="">Мебель</a></li>
-            <li><a href="">Выставки и события</a></li>
-        </ul>
+            <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "nav", Array(
+                "PATH" => "",	// Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
+                "SITE_ID" => "s1",	// Cайт (устанавливается в случае многосайтовой версии, когда DOCUMENT_ROOT у сайтов разный)
+                "START_FROM" => "0",	// Номер пункта, начиная с которого будет построена навигационная цепочка
+            ),
+                false
+            );?>
         <div class="clearboth"></div>
     </div>
     <div class="main_container page">
