@@ -41,6 +41,13 @@ $aMenuLinks = Array(
 		Array(), 
 		Array(), 
 		"" 
+	),
+	Array(
+		"Тестовый раздел", 
+		"/company/test_folder/", 
+		Array(), 
+		Array(), 
+		"" 
 	)
 );
 ?>

@@ -5,37 +5,40 @@ IncludeTemplateLangFile(__FILE__);
 </div>
 </div>
 <div class="sb_sidebar">
-    <div class="sb_nav">
-        <ul>
-            <li class="close"><a href=""><span>Каталог</span></a></li>
-            <li class="close"><a href=""><span>Кухни</span></a></li>
-            <li class="close"><a href=""><span>Гарнитуры</span></a></li>
-            <li class="open current">
-                <span class="sb_showchild"></span>
-                <a href=""><span>Спальни</span></a>
-                <ul>
-                    <li><a href="">Одноместрые</a></li>
-                    <li><a href="">Двухместные</a></li>
-                    <li><a href="">Детские</a></li>
-                </ul>
-            </li>
-            <li class="close"><a href=""><span>Кухни</span></a></li>
-            <li class="close"><a href=""><span>Гарнитуры</span></a></li>
-            <li class="close">
-                <span class="sb_showchild"></span>
-                <a href=""><span>Спальни</span></a>
-                <ul>
-                    <li><a href="">Одноместрые</a></li>
-                    <li><a href="">Двухместные</a></li>
-                    <li><a href="">Детские</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+    <?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"left_menu", 
+	array(
+		"ALLOW_MULTI_SELECT" => "N",
+		"CHILD_MENU_TYPE" => "left",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "2",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_TYPE" => "N",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"ROOT_MENU_TYPE" => "left",
+		"USE_EXT" => "N",
+		"COMPONENT_TEMPLATE" => "left_menu"
+	),
+	false
+);?>
+
     <div class="sb_event">
-        <div class="sb_event_header"><h4>Ближайшие события</h4></div>
-        <p><a href="">29 августа 2012, Москва</a></p>
-        <p>Семинар производителей мебели России и СНГ, Обсуждение тенденций.</p>
+        <?$APPLICATION->IncludeComponent(
+	"bitrix:main.include",
+	".default",
+	array(
+		"AREA_FILE_RECURSIVE" => "Y",
+		"AREA_FILE_SHOW" => "sect",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "standard.php",
+		"PATH" => "",
+		"COMPONENT_TEMPLATE" => ".default"
+	),
+	false
+);?>
     </div>
     <div class="sb_action">
         <a href=""><img src="/bitrix/templates/.default/content/11.png" alt=""/></a>
@@ -43,16 +46,6 @@ IncludeTemplateLangFile(__FILE__);
         <h5><a href="">Мебельная полка всего за 560 Р</a></h5>
         <a href="" class="sb_action_more">Подробнее &rarr;</a>
     </div>
-    <?$APPLICATION->IncludeComponent(
-        "bitrix:main.include",
-        "",
-        Array(
-            "AREA_FILE_RECURSIVE" => "Y",
-            "AREA_FILE_SHOW" => "sect",
-            "AREA_FILE_SUFFIX" => "inc",
-            "EDIT_TEMPLATE" => ""
-        )
-    );?>
     <div class="sb_reviewed">
         <img src="/bitrix/templates/.default/content/8.png" class="sb_rw_avatar" alt=""/>
         <span class="sb_rw_name">Сергей Антонов</span>
@@ -69,13 +62,22 @@ IncludeTemplateLangFile(__FILE__);
 <div class="ft_footer">
     <div class="ft_container">
         <div class="ft_about">
-            <h4>О магазине</h4>
-            <ul>
-                <li><a href="">Отзывы</a></li>
-                <li><a href="">Контакты</a></li>
-                <li><a href="">Руководство</a></li>
-                <li><a href="">История</a></li>
-            </ul>
+            <?$APPLICATION->IncludeComponent("bitrix:menu", ".default", Array(
+                "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+                "CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
+                "DELAY" => "N",	// Откладывать выполнение шаблона меню
+                "MAX_LEVEL" => "1",	// Уровень вложенности меню
+                "MENU_CACHE_GET_VARS" => array(	// Значимые переменные запроса
+                    0 => "",
+                ),
+                "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+                "MENU_CACHE_TYPE" => "N",	// Тип кеширования
+                "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+                "ROOT_MENU_TYPE" => "bottom",	// Тип меню для первого уровня
+                "USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+            ),
+                false
+            );?>
         </div>
         <div class="ft_catalog">
             <h4>Каталог товаров</h4>
@@ -98,9 +100,29 @@ IncludeTemplateLangFile(__FILE__);
             <!-- vCard        http://help.yandex.ru/webmaster/hcard.pdf      -->
             <p class="vcard">
 						<span class="adr">
-							<span class="street-address">ул. Летняя стр.12, офис 512</span>
+							<span class="street-address"><?$APPLICATION->IncludeComponent(
+	"bitrix:main.include", 
+	".default", 
+	array(
+		"AREA_FILE_SHOW" => "file",
+		"AREA_FILE_SUFFIX" => "inc",
+		"EDIT_TEMPLATE" => "standard.php",
+		"PATH" => "/include/adress.php",
+		"COMPONENT_TEMPLATE" => ".default"
+	),
+	false
+);?></span>
 						</span>
-                <span class="tel">8 (495) 212-85-06</span>
+                <span class="tel"><?$APPLICATION->IncludeComponent(
+                        "bitrix:main.include",
+                        "",
+                        Array(
+                            "AREA_FILE_SHOW" => "file",
+                            "AREA_FILE_SUFFIX" => "inc",
+                            "EDIT_TEMPLATE" => "",
+                            "PATH" => "/include/phone.php"
+                        )
+                    );?></span>
                 <strong><?= GetMessage('working time');?>:</strong> <br/> <span class="workhours">ежедневно с 9-00 до 18-00</span><br/>
             </p>
             <ul class="ft_solcial">
