@@ -48,12 +48,16 @@ IncludeTemplateLangFile(__FILE__);
                         <?= GetMessage('working time');?> <span class="workhours">ежедневно с 9-00 до 18-00</span>
                     </td>
                     <td style="width:232px">
-                        <form action="">
-                            <div class="hd_search_form" style="float:right;">
-                                <input placeholder="Поиск" type="text"/>
-                                <input type="submit" value=""/>
-                            </div>
-                        </form>
+                        <?$APPLICATION->IncludeComponent(
+	"bitrix:search.form", 
+	"search", 
+	array(
+		"COMPONENT_TEMPLATE" => "search",
+		"PAGE" => "#SITE_DIR#search/index.php",
+		"USE_SUGGEST" => "Y"
+	),
+	false
+);?><br>
                     </td>
                 </tr>
                 <tr>
@@ -73,21 +77,24 @@ IncludeTemplateLangFile(__FILE__);
                 </tr>
             </table>
             <?$APPLICATION->IncludeComponent(
-                "bitrix:menu",
-                "top_menu",
-                Array(
-                    "ALLOW_MULTI_SELECT" => "N",
-                    "CHILD_MENU_TYPE" => "left",
-                    "DELAY" => "N",
-                    "MAX_LEVEL" => "2",
-                    "MENU_CACHE_GET_VARS" => array(0=>"",),
-                    "MENU_CACHE_TIME" => "3600",
-                    "MENU_CACHE_TYPE" => "N",
-                    "MENU_CACHE_USE_GROUPS" => "Y",
-                    "ROOT_MENU_TYPE" => "top",
-                    "USE_EXT" => "N"
-                )
-            );?>
+	"bitrix:menu", 
+	"top_menu", 
+	array(
+		"ALLOW_MULTI_SELECT" => "N",
+		"CHILD_MENU_TYPE" => "left",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "2",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_TYPE" => "A",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"ROOT_MENU_TYPE" => "top",
+		"USE_EXT" => "N",
+		"COMPONENT_TEMPLATE" => "top_menu"
+	),
+	false
+);?>
         </div>
     </div>
 

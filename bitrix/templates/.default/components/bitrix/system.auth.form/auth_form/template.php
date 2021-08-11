@@ -98,33 +98,11 @@ else:
 <span class="hd_sing">
                         <?=$arResult["USER_NAME"]?> [<a href="<?=$arResult["PROFILE_URL"]?>"><?=$arResult["USER_LOGIN"]?></a>]
                     </span>
-<a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", array(
+<a href="<?=$APPLICATION->GetCurPageParam("logout=yes&".bitrix_sessid_get(), array(
     "login",
     "logout",
     "register",
     "forgot_password",
     "change_password"));?>" class="hd_signup"><?=GetMessage("AUTH_LOGOUT_BUTTON")?></a>
-
-<!--    <form action="--><?//=$arResult["AUTH_URL"]?><!--">-->
-<!--	<table width="95%">-->
-<!--		<tr>-->
-<!--			<td align="center">-->
-<!--				--><?//=$arResult["USER_NAME"]?><!--<br />-->
-<!--				[--><?//=$arResult["USER_LOGIN"]?><!--]<br />-->
-<!--				<a href="--><?//=$arResult["PROFILE_URL"]?><!--" title="--><?//=GetMessage("AUTH_PROFILE")?><!--">--><?//=GetMessage("AUTH_PROFILE")?><!--</a><br />-->
-<!--			</td>-->
-<!--		</tr>-->
-<!--		<tr>-->
-<!--			<td align="center">-->
-<!--			--><?//foreach ($arResult["GET"] as $key => $value):?>
-<!--				<input type="hidden" name="--><?//=$key?><!--" value="--><?//=$value?><!--" />-->
-<!--			--><?//endforeach?>
-<!--			--><?//=bitrix_sessid_post()?>
-<!--			<input type="hidden" name="logout" value="yes" />-->
-<!--			<input type="submit" name="logout_butt" value="--><?//=GetMessage("AUTH_LOGOUT_BUTTON")?><!--" />-->
-<!--			</td>-->
-<!--		</tr>-->
-<!--	</table>-->
-<!--</form>-->
 <?endif?>
 </div>

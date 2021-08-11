@@ -6,7 +6,7 @@ $APPLICATION->SetTitle("Продукция");
 	"",
 	Array(
 		"ACTION_VARIABLE" => "action",
-		"ADD_ELEMENT_CHAIN" => "N",
+		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_PICT_PROP" => "-",
 		"ADD_PROPERTIES_TO_BASKET" => "Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
@@ -15,7 +15,7 @@ $APPLICATION->SetTitle("Продукция");
 		"AJAX_OPTION_HISTORY" => "N",
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_SHADOW" => "Y",
-		"AJAX_OPTION_STYLE" => "Y",
+		"AJAX_OPTION_STYLE" => "N",
 		"BASKET_URL" => "",
 		"CACHE_FILTER" => "N",
 		"CACHE_GROUPS" => "Y",

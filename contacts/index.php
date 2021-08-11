@@ -29,15 +29,21 @@ $APPLICATION->SetTitle("Контакты");
 </ul>
 <h2>Форма обратной связи</h2>
  <?$APPLICATION->IncludeComponent(
-	"bitrix:main.feedback",
-	"",
-	Array(
+	"bitrix:main.feedback", 
+	".default", 
+	array(
 		"EMAIL_TO" => "svsvpop-3d@mail.ru",
-		"EVENT_MESSAGE_ID" => array("7"),
+		"EVENT_MESSAGE_ID" => array(
+			0 => "7",
+		),
 		"OK_TEXT" => "Спасибо, ваше сообщение принято.",
-		"REQUIRED_FIELDS" => array("NONE"),
-		"USE_CAPTCHA" => "Y"
-	)
+		"REQUIRED_FIELDS" => array(
+			0 => "NONE",
+		),
+		"USE_CAPTCHA" => "Y",
+		"COMPONENT_TEMPLATE" => ".default"
+	),
+	false
 );?><br>
 <h2>Офис в Москве</h2>
 <p>

@@ -26,19 +26,40 @@ IncludeTemplateLangFile(__FILE__);
             <table>
                 <tr>
                     <td rowspan="2" class="hd_companyname">
-                        <h1><a href=""><?= GetMessage('furniture store');?></a></h1>
+                        <h1><a href=""><?$APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    "",
+                                    Array(
+                                        "AREA_FILE_SHOW" => "file",
+                                        "AREA_FILE_SUFFIX" => "inc",
+                                        "EDIT_TEMPLATE" => "",
+                                        "PATH" => "/include/logo.php"
+                                    )
+                                );?></a></h1>
                     </td>
                     <td rowspan="2" class="hd_txarea">
-                        <span class="tel">8 (495) 212-85-06</span>	<br/>
+                        <span class="tel"><?$APPLICATION->IncludeComponent(
+                                "bitrix:main.include",
+                                "",
+                                Array(
+                                    "AREA_FILE_SHOW" => "file",
+                                    "AREA_FILE_SUFFIX" => "inc",
+                                    "EDIT_TEMPLATE" => "",
+                                    "PATH" => "/include/phone.php"
+                                )
+                            );?></span>	<br/>
                         <?= GetMessage('working time');?> <span class="workhours">ежедневно с 9-00 до 18-00</span>
                     </td>
                     <td style="width:232px">
-                        <form action="">
-                            <div class="hd_search_form" style="float:right;">
-                                <input placeholder="Поиск" type="text"/>
-                                <input type="submit" value=""/>
-                            </div>
-                        </form>
+                        <?$APPLICATION->IncludeComponent(
+                            "bitrix:search.form",
+                            "search",
+                            Array(
+                                "COMPONENT_TEMPLATE" => "search",
+                                "PAGE" => "#SITE_DIR#search/index.php",
+                                "USE_SUGGEST" => "N"
+                            )
+                        );?><br>
                     </td>
                 </tr>
                 <tr>
@@ -98,26 +119,71 @@ IncludeTemplateLangFile(__FILE__);
         });
     </script>
 
-    <div class="sl_slider" id="slides">
-        <div class="slides_container">
-            <div>
-                <div>
-                    <img src="/bitrix/templates/.default/content/1.jpg" alt="" />
-                    <h2><a href="">Диваны и кресла</a></h2>
-                    <p>Новая комбинация для ТВ БЕСТО не просто предмет мебели – она разработана, также, для мультимедиа. Провода и сетевые кабели можно хранить внутри комбинации или протянуть через отверстие для вентиляции. Секция полок обеспечивает эффективное использование стены, освобождая место на полу.</p>
-                    <a href="" class="sl_more">Подробнее &rarr;</a>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <img src="/bitrix/templates/.default/content/1.jpg" alt="" />
-                    <h2><a href="">Диваны и кресла</a></h2>
-                    <p>Новая комбинация для ТВ БЕСТО не просто предмет мебели – она разработана, также, для мультимедиа. Провода и сетевые кабели можно хранить внутри комбинации или протянуть через отверстие для вентиляции. Секция полок обеспечивает эффективное использование стены, освобождая место на полу.</p>
-                    <a href="" class="sl_more">Подробнее &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?$APPLICATION->IncludeComponent(
+	"bitrix:news.list", 
+	"slider", 
+	array(
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"CACHE_FILTER" => "N",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"CHECK_DATES" => "Y",
+		"DETAIL_URL" => "",
+		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"FIELD_CODE" => array(
+			0 => "",
+			1 => "",
+		),
+		"FILTER_NAME" => "",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"IBLOCK_ID" => "5",
+		"IBLOCK_TYPE" => "Content",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"MESSAGE_404" => "",
+		"NEWS_COUNT" => "10",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => ".default",
+		"PAGER_TITLE" => "Новости",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"PROPERTY_CODE" => array(
+			0 => "LINK",
+			1 => "",
+		),
+		"SET_BROWSER_TITLE" => "Y",
+		"SET_LAST_MODIFIED" => "N",
+		"SET_META_DESCRIPTION" => "Y",
+		"SET_META_KEYWORDS" => "Y",
+		"SET_STATUS_404" => "N",
+		"SET_TITLE" => "Y",
+		"SHOW_404" => "N",
+		"SORT_BY1" => "ID",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "ASC",
+		"SORT_ORDER2" => "ASC",
+		"STRICT_SECTION_CHECK" => "N",
+		"COMPONENT_TEMPLATE" => "slider"
+	),
+	false
+);?><br>
 
 
     <!--- // end slider area --->
@@ -197,29 +263,64 @@ IncludeTemplateLangFile(__FILE__);
                     <div class="clearboth"></div>
                 </div>
             </div>
-            <div class="cn_hp_lastnews">
-                <h3><a href="">Новости</a></h3>
-                <ul>
-                    <li>
-                        <h4><a href="">29 августа 2012</a></h4>
-                        <p>Поступление лучших офисных кресел из Германии</p>
-                    </li>
-                    <li>
-                        <h4><a href="">29 августа 2012</a></h4>
-                        <p>Мастер-класс дизайнеров из Италии для производителей мебели</p>
-                    </li>
-                    <li>
-                        <h4><a href="">29 августа 2012</a></h4>
-                        <p>Открытие нашего нового офиса рядом с метро Измайлово</p>
-                    </li>
-                    <li>
-                        <h4><a href="">29 августа 2012</a></h4>
-                        <p>Наша дилерская сеть расширилась теперь ассортимент наших товаров доступен в Казани</p>
-                    </li>
-                </ul>
-                <br/>
-                <a href="" class="cn_hp_lastnews_more">Все новости &rarr;</a>
-            </div>
+            <?$APPLICATION->IncludeComponent(
+                "bitrix:news.list",
+                "news_right",
+                Array(
+                    "ACTIVE_DATE_FORMAT" => "j F Y",
+                    "ADD_SECTIONS_CHAIN" => "Y",
+                    "AJAX_MODE" => "N",
+                    "AJAX_OPTION_ADDITIONAL" => "",
+                    "AJAX_OPTION_HISTORY" => "N",
+                    "AJAX_OPTION_JUMP" => "N",
+                    "AJAX_OPTION_STYLE" => "Y",
+                    "CACHE_FILTER" => "N",
+                    "CACHE_GROUPS" => "Y",
+                    "CACHE_TIME" => "36000000",
+                    "CACHE_TYPE" => "A",
+                    "CHECK_DATES" => "Y",
+                    "COMPONENT_TEMPLATE" => ".default",
+                    "DETAIL_URL" => "",
+                    "DISPLAY_BOTTOM_PAGER" => "N",
+                    "DISPLAY_DATE" => "Y",
+                    "DISPLAY_NAME" => "Y",
+                    "DISPLAY_PICTURE" => "Y",
+                    "DISPLAY_PREVIEW_TEXT" => "Y",
+                    "DISPLAY_TOP_PAGER" => "N",
+                    "FIELD_CODE" => array(0=>"",1=>"",),
+                    "FILTER_NAME" => "",
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "N",
+                    "IBLOCK_ID" => "1",
+                    "IBLOCK_TYPE" => "news",
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+                    "INCLUDE_SUBSECTIONS" => "Y",
+                    "MESSAGE_404" => "",
+                    "NEWS_COUNT" => "4",
+                    "PAGER_BASE_LINK_ENABLE" => "N",
+                    "PAGER_DESC_NUMBERING" => "N",
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                    "PAGER_SHOW_ALL" => "N",
+                    "PAGER_SHOW_ALWAYS" => "N",
+                    "PAGER_TEMPLATE" => ".default",
+                    "PAGER_TITLE" => "Новости",
+                    "PARENT_SECTION" => "",
+                    "PARENT_SECTION_CODE" => "",
+                    "PREVIEW_TRUNCATE_LEN" => "",
+                    "PROPERTY_CODE" => array(0=>"",1=>"",),
+                    "SET_BROWSER_TITLE" => "Y",
+                    "SET_LAST_MODIFIED" => "N",
+                    "SET_META_DESCRIPTION" => "Y",
+                    "SET_META_KEYWORDS" => "Y",
+                    "SET_STATUS_404" => "N",
+                    "SET_TITLE" => "Y",
+                    "SHOW_404" => "N",
+                    "SORT_BY1" => "ACTIVE_FROM",
+                    "SORT_BY2" => "SORT",
+                    "SORT_ORDER1" => "DESC",
+                    "SORT_ORDER2" => "ASC",
+                    "STRICT_SECTION_CHECK" => "N"
+                )
+            );?><br>
             <div class="clearboth"></div>
         </div>
     </div>
@@ -240,42 +341,71 @@ IncludeTemplateLangFile(__FILE__);
     </script>
 
     <div class="rw_reviewed">
-        <div class="rw_slider">
-            <h4>Отзывы</h4>
-            <ul id="foo">
-                <li>
-                    <div class="rw_message">
-                        <img src="/bitrix/templates/.default/content/8.png" class="rw_avatar" alt=""/>
-                        <span class="rw_name">Сергей Антонов</span>
-                        <span class="rw_job">Руководитель финансового отдела “Банк+”</span>
-                        <p>“Покупал офисные стулья и столы, остался очень доволен! Низкие цены, быстрая доставка, обслуживание на высоте! Спасибо!”</p>
-                        <div class="clearboth"></div>
-                        <div class="rw_arrow"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="rw_message">
-                        <img src="/bitrix/templates/.default/content/8.png" class="rw_avatar" alt=""/>
-                        <span class="rw_name">Дмитрий Иванов</span>
-                        <span class="rw_job">Генеральный директор группы компаний "Офис+"</span>
-                        <p>“В магзине предоставили потрясающий выбор расцветок, а также, получил большую скидку по карте постоянного клиента.”</p>
-                        <div class="clearboth"></div>
-                        <div class="rw_arrow"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="rw_message">
-                        <img src="/bitrix/templates/.default/content/8.png" class="rw_avatar" alt=""/>
-                        <span class="rw_name">Сергей Антонов</span>
-                        <span class="rw_job">Руководитель финансового отдела “Банк+”</span>
-                        <p>“Покупал офисные стулья и столы, остался очень доволен! Низкие цены, быстрая доставка, обслуживание на высоте! Спасибо!”</p>
-                        <div class="clearboth"></div>
-                        <div class="rw_arrow"></div>
-                    </div>
-                </li>
-            </ul>
-            <div id="rwprev"></div>
-            <div id="rwnext"></div>
-            <a href="" class="rw_allreviewed">Все отзывы</a>
-        </div>
+        <?$APPLICATION->IncludeComponent(
+	"bitrix:news.list", 
+	"reviews_carousel", 
+	array(
+		"ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"ADD_SECTIONS_CHAIN" => "N",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"CACHE_FILTER" => "N",
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "36000000",
+		"CACHE_TYPE" => "A",
+		"CHECK_DATES" => "Y",
+		"DETAIL_URL" => "",
+		"DISPLAY_BOTTOM_PAGER" => "N",
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_NAME" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"DISPLAY_TOP_PAGER" => "N",
+		"FIELD_CODE" => array(
+			0 => "",
+			1 => "",
+		),
+		"FILTER_NAME" => "",
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"IBLOCK_ID" => "6",
+		"IBLOCK_TYPE" => "Content",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "N",
+		"INCLUDE_SUBSECTIONS" => "Y",
+		"MESSAGE_404" => "",
+		"NEWS_COUNT" => "4",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_TEMPLATE" => ".default",
+		"PAGER_TITLE" => "Новости",
+		"PARENT_SECTION" => "",
+		"PARENT_SECTION_CODE" => "",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"PROPERTY_CODE" => array(
+			0 => "POSITION",
+			1 => "COMPANY",
+			2 => "LINK",
+			3 => "",
+		),
+		"SET_BROWSER_TITLE" => "Y",
+		"SET_LAST_MODIFIED" => "N",
+		"SET_META_DESCRIPTION" => "Y",
+		"SET_META_KEYWORDS" => "Y",
+		"SET_STATUS_404" => "N",
+		"SET_TITLE" => "Y",
+		"SHOW_404" => "N",
+		"SORT_BY1" => "ACTIVE_FROM",
+		"SORT_BY2" => "SORT",
+		"SORT_ORDER1" => "DESC",
+		"SORT_ORDER2" => "ASC",
+		"STRICT_SECTION_CHECK" => "N",
+		"COMPONENT_TEMPLATE" => "reviews_carousel"
+	),
+	false
+);?><br>
     </div>

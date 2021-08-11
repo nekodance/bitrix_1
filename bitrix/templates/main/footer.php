@@ -5,22 +5,25 @@ IncludeTemplateLangFile(__FILE__);
 <div class="ft_footer">
     <div class="ft_container">
         <div class="ft_about">
-            <?$APPLICATION->IncludeComponent("bitrix:menu", ".default", Array(
-                "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
-                "CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
-                "DELAY" => "N",	// Откладывать выполнение шаблона меню
-                "MAX_LEVEL" => "1",	// Уровень вложенности меню
-                "MENU_CACHE_GET_VARS" => array(	// Значимые переменные запроса
-                    0 => "",
-                ),
-                "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
-                "MENU_CACHE_TYPE" => "N",	// Тип кеширования
-                "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
-                "ROOT_MENU_TYPE" => "bottom",	// Тип меню для первого уровня
-                "USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
-            ),
-                false
-            );?>
+            <?$APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	".default", 
+	array(
+		"ALLOW_MULTI_SELECT" => "N",
+		"CHILD_MENU_TYPE" => "left",
+		"DELAY" => "N",
+		"MAX_LEVEL" => "1",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_TYPE" => "A",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"ROOT_MENU_TYPE" => "bottom",
+		"USE_EXT" => "N",
+		"COMPONENT_TEMPLATE" => ".default"
+	),
+	false
+);?>
         </div>
         <div class="ft_catalog">
             <h4>Каталог товаров</h4>
@@ -43,7 +46,18 @@ IncludeTemplateLangFile(__FILE__);
             <!-- vCard        http://help.yandex.ru/webmaster/hcard.pdf      -->
             <p class="vcard">
 						<span class="adr">
-							<span class="street-address">ул. Летняя стр.12, офис 512</span>
+							<span class="street-address"><?$APPLICATION->IncludeComponent(
+                                    "bitrix:main.include",
+                                    ".default",
+                                    array(
+                                        "AREA_FILE_SHOW" => "file",
+                                        "AREA_FILE_SUFFIX" => "inc",
+                                        "EDIT_TEMPLATE" => "standard.php",
+                                        "PATH" => "/include/adress.php",
+                                        "COMPONENT_TEMPLATE" => ".default"
+                                    ),
+                                    false
+                                );?></span>
 						</span>
                 <span class="tel">8 (495) 212-85-06</span>
                 <strong><?= GetMessage('working time');?>:</strong> <br/> <span class="workhours">ежедневно с 9-00 до 18-00</span><br/>
