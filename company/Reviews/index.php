@@ -17,7 +17,7 @@ $APPLICATION->SetTitle("Отзывы");
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
-		"DETAIL_URL" => "",
+		"DETAIL_URL" => "/company/Reviews/",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_DATE" => "Y",
 		"DISPLAY_NAME" => "Y",

@@ -26,20 +26,9 @@ IncludeTemplateLangFile(__FILE__);
 );?>
 
     <div class="sb_event">
-        <?$APPLICATION->IncludeComponent(
-	"bitrix:main.include",
-	".default",
-	array(
-		"AREA_FILE_RECURSIVE" => "Y",
-		"AREA_FILE_SHOW" => "sect",
-		"AREA_FILE_SUFFIX" => "inc",
-		"EDIT_TEMPLATE" => "standard.php",
-		"PATH" => "",
-		"COMPONENT_TEMPLATE" => ".default"
-	),
-	false
-);?>
+        <?$APPLICATION->ShowViewContent('filter');?>
     </div>
+
     <div class="sb_action">
         <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list", 

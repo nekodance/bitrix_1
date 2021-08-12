@@ -7,7 +7,7 @@ IncludeTemplateLangFile(__FILE__);
 <head>
     <meta charset="UTF-8">
     <?$APPLICATION->ShowHead();?>
-    <title><?$APPLICATION->ShowTitle()?></title>
+    <title><?$APPLICATION->ShowTitle();?></title>
     <link rel="stylesheet" href="/bitrix/templates/.default/template_styles.css"/>
     <script type="text/javascript" src="/bitrix/templates/.default/js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="/bitrix/templates/.default/js/functions.js"></script>
@@ -90,7 +90,7 @@ IncludeTemplateLangFile(__FILE__);
 		"MENU_CACHE_TYPE" => "A",
 		"MENU_CACHE_USE_GROUPS" => "Y",
 		"ROOT_MENU_TYPE" => "top",
-		"USE_EXT" => "N",
+		"USE_EXT" => "Y",
 		"COMPONENT_TEMPLATE" => "top_menu"
 	),
 	false

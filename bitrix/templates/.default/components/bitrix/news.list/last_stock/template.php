@@ -16,7 +16,7 @@ $this->setFrameMode(true);
 <?foreach($arResult["ITEMS"] as $arItem):?>
 <a href=""><img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"/></a>
 <h4>Акция!</h4>
-<h5><a href=""><?echo $arItem["NAME"]?> всего за <?= $arItem["PROPERTIES"]["COST"]["VALUE"]?></a></h5>
+<h5><a href=""><?echo $arItem["NAME"]?> всего за <?= $arItem["DISPLAY_PROPERTIES"]["COST"]["DISPLAY_VALUE"]?></a></h5>
 <a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="sb_action_more">Подробнее &rarr;</a>
 <?endforeach;?>
 

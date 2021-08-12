@@ -1,39 +1,4 @@
 <?
 $aMenuLinks = Array(
-	Array(
-		"Каталог", 
-		"/products", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Кухни", 
-		"/products/3/", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Гарнитуры", 
-		"", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"Спальни", 
-		"", 
-		Array(), 
-		Array(), 
-		"" 
-	),
-	Array(
-		"", 
-		"", 
-		Array(), 
-		Array(), 
-		"" 
-	)
 );
 ?>
